@@ -21,14 +21,6 @@ router.get('/:orderId', (req, res, next) => {
         })
 })
 
-
-// router.patch('/:productId', (req, res, next) => {
-//   res.status(200).json({
-//       message: 'Updated Product'
-//   })
-// })
-
-
 router.delete('/:orderId', (req, res, next) => {
     res.status(200).json({
         message: 'Deleted Order'
