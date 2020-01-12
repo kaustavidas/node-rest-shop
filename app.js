@@ -2,13 +2,17 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
+mongoose.connect('mongodb+srv://user:' + process.env.MONGO_ATLAS_PASSWORD + '@node-rest-shop-hdag0.mongodb.net/test?retryWrites=true&w=majority',
+                 { useNewUrlParser: true, useUnifiedTopology: true});
 
 // Middleware
 // Morgan Use For to See App Log (Means App Calling Stats) in Terminal
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
 
 
 //CORS SETUP 
