@@ -12,6 +12,8 @@ mongoose.Promise = global.Promise;
 // Middleware
 // Morgan Use For to See App Log (Means App Calling Stats) in Terminal
 app.use(morgan('dev'));
+//Using express.static for public access to upload folder & /upload for url
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
