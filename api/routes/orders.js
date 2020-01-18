@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../middleware/check-auth');
 
 const Order = require('../models/order');
 const Product = require('../models/product');
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
     Order.find()
          .populate('product', 'name')
          .exec()
@@ -40,7 +41,7 @@ router.get('/', (req, res, next) => {
 
 
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
     //Checking Product Id is Matching With Order Product Id
     Product.findById({ _id : req.body.productId })
            .then(product => {
@@ -83,7 +84,7 @@ router.post('/', (req, res, next) => {
         })
 })
 
-router.get('/:orderId', (req, res, next) => {
+router.get('/:orderId', checkAuth, (req, res, next) => {
     const id = req.params.orderId;
 
     Order.findById({ _id : id})
@@ -107,7 +108,7 @@ router.get('/:orderId', (req, res, next) => {
          })
 })
 
-router.delete('/:orderId', (req, res, next) => {
+router.delete('/:orderId', checkAuth, (req, res, next) => {
   const deleteId = req.params.orderId;
   Order.deleteOne({ _id : deleteId })
        .exec()
