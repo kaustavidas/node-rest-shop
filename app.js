@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://user:' + process.env.MONGO_ATLAS_PASSWORD + '@node-rest-shop-hdag0.mongodb.net/test?retryWrites=true&w=majority',
-                 { useNewUrlParser: true, useUnifiedTopology: true});
+                 { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 mongoose.Promise = global.Promise;
 
