@@ -36,11 +36,13 @@ app.use((req, res, next) => {
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRouts = require('./api/routes/users');
 
 
 // Routes Which Should handle Request
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/users', userRouts);
 
 
 // Error Handling Middleware For Not Finding API
